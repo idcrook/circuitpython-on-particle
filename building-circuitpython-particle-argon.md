@@ -25,8 +25,9 @@ Fetch the code to build
 
 ```
 cd ~/projects
-git clone https://github.com/adafruit/circuitpython.git
-cd circuitpython
+# git clone https://github.com/adafruit/circuitpython.git
+cd  ~/projects/circuitpython
+git pull
 git submodule sync
 git submodule update --init --recursive
 ```

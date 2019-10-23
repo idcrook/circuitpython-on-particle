@@ -15,8 +15,8 @@ download the .deb 64-bit Linux from: https://www.segger.com/downloads/jlink#J-Li
 mkdir -p ~/projects/jlink
 mkdir -p ~/projects/jlink/downloads
 cd ~/projects/jlink
-mv ~/Downloads/JLink_Linux_V644h_x86_64.deb downloads/
-sudo dpkg -i ./downloads/JLink_Linux_V644h_x86_64.deb
+mv ~/Downloads/JLink_Linux_V648b_x86_64.deb downloads/
+sudo dpkg -i ./downloads/JLink_Linux_V648b_x86_64.deb
 ```
 
 Install nrfjprog
@@ -24,11 +24,15 @@ Install nrfjprog
 
 To flash using Jlink, `nrfjprog` is used
 
-The binary files provided by the manufacturer of the chip can be downloaded via the following page : https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF5-Command-Line-Tools
+The binary files provided by the manufacturer of the chip can be downloaded via the following page : https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools
 
-For my Mint Linux 19 (Ubuntu 18.04), choose `Linux64 9.8.1` from the "*Download nRF5 Command line tools, latest version*" dropdown
+[ Downloads ] tab
 
-`nRF-Command-Line-Tools_9_8_1_Linux-x86_64.tar`
+Select Linux64 in dropdown
+
+choose `Linux64 10.2.1` as Selected version
+
+`nRFCommandLineTools1021Linuxamd64tar.gz`
 
 Doc: https://infocenter.nordicsemi.com/index.jsp?topic=%2Fug_nrf5x_cltools%2FUG%2Fcltools%2Fnrf5x_command_line_tools_lpage.html&cp=6_1
 
@@ -38,20 +42,29 @@ This is how I install things like this on my system. YMMV.
 
 ```
 cd ~/projects/jlink
-mv ~/Downloads/nRF-Command-Line-Tools_9_8_1_Linux-x86_64.tar downloads/
-mkdir tmp/
-tar -xvf downloads/nRF-Command-Line-Tools_9_8_1_Linux-x86_64.tar -C ./tmp/
-mkdir -p ~/bin/linux/containers/
+mv ~/Downloads/nRFCommandLineTools1021Linuxamd64tar.gz downloads/
+mkdir -p tmp/
+tar -xzvf downloads/nRFCommandLineTools1021Linuxamd64tar.gz -C ./tmp/
+tar -xzvf tmp/./nRF-Command-Line-Tools_10_2_1_Linux-amd64.tar.gz -C ./tmp/
+
+# mkdir -p ~/bin/linux/containers/
+rm -rf ~/bin/linux/containers/mergehex/
+rm -rf ~/bin/linux/containers/nrfjprog/
+
 mv tmp/mergehex/ ~/bin/linux/containers/
 mv tmp/nrfjprog/ ~/bin/linux/containers/
 rmdir tmp
 chmod +x ~/bin/linux/containers/mergehex/mergehex
 chmod +x ~/bin/linux/containers/nrfjprog/nrfjprog
 # add  ~/bin/linux/containers/nrfjprog/ to $PATH
+# modpath ~/bin/linux/containers/nrfjprog/
 nrfjprog --version
 ```
 
-> nrfjprog version: 9.8.1 JLinkARM.dll version: 6.44h
+```
+nrfjprog version: 10.2.1
+JLinkARM.dll version: 6.48b
+```
 
 <!-- See [Flash bootloader using Arduino](flash-adafruit-bootloader-with-arduino.md) -->
 
@@ -66,9 +79,9 @@ Download (`git clone`) Adafruit nRF52840 Bootloader
 
 ```
 cd ~/projects/jlink/
-git clone https://github.com/adafruit/Adafruit_nRF52_Bootloader
+# git clone https://github.com/adafruit/Adafruit_nRF52_Bootloader
 cd Adafruit_nRF52_Bootloader
-git submodule update --init
+git submodule update --init --recursive
 ```
 
 To flash, requires JLink hooked up to Particle (SWD header).
@@ -125,6 +138,8 @@ screen /dev/ttyACM0 115200
 ```
 
 > Adafruit CircuitPython 4.0.1-5-g63b253c33 on 2019-05-22; Particle Argon with nRF52840
+>
+> Adafruit CircuitPython 5.0.0-alpha.0-128-g347fbb652-dirty on 2019-08-02; Particle Argon with nRF52840
 
 CircuitPython programs
 ======================
