@@ -20,7 +20,7 @@ The footprint and layout for pins matches the Adafruit FeatherWing layout, so is
 Install Adafruit nRF52 bootloader
 ---------------------------------
 
-To use CircuitPython, the nrf52840 module on the Particle Argon needs to be flashed with Adafruit's bootloader. For my setup, this uses Segger J-Link (connected to Particle board header with matching SWD adapter) and OpenOCD.
+To use CircuitPython, the nRF52840 module on the Particle Argon/Xenon/Boron needs to be flashed with Adafruit's bootloader. For my setup, this uses Segger J-Link (connected to Particle board header with matching SWD adapter).
 
 By burning the Adafruit nRF52 Bootloader on the Particle, you are overwriting the Particle mesh firmware already on your board.
 
