@@ -9,13 +9,36 @@ CircuitPython on Particle Argon, Xenon, Boron, etc.
 	-	https://blog.particle.io/mesh-deprecation/
 	-	https://docs.particle.io/tutorials/learn-more/xenon-circuit-python/
 
-Adafruit has a [bootloader for nRF52] and also has CircuitPython builds for:
+Adafruit has a [bootloader for nRF52](https://github.com/adafruit/Adafruit_nRF52_Bootloader) and also has CircuitPython builds for:
 
 -	Particle Xenon (discontinued), **Bluetooth** and OpenThread
 -	Particle Argon - **WiFi** and **Bluetooth**
 -	Particle Boron - **LTE** and **Bluetooth**
 
 The footprint and layout for pins matches the Adafruit FeatherWing layout, so is compatible with many Wings.
+
+Install Adafruit nRF52 bootloader
+---------------------------------
+
+To use CircuitPython, the nrf52840 module on the Particle Argon needs to be flashed with Adafruit's bootloader. For my setup, this uses Segger J-Link (connected to Particle board header with matching SWD adapter) and OpenOCD.
+
+By burning the Adafruit nRF52 Bootloader on the Particle, you are overwriting the Particle mesh firmware already on your board.
+
+Here are the steps, including installing CircuitPython itself: [Installing CircuitPython on nRF52840-based Particle ](installing-circuitpython-particle-jlink.md)
+
+Build CircuitPython from Source
+-------------------------------
+
+Adafruit supports building a released `.uf2` image for Particle (Argon, Boron, Xenon) now in 4.X+ releases, along with 50+ other boards.
+
+Adafruit publishes `.uf2` files at: https://circuitpython.org/downloads
+
+-	https://circuitpython.org/board/particle_argon/
+-	https://circuitpython.org/board/particle_xenon/
+-	https://circuitpython.org/board/particle_boron/
+
+But building CircuitPython from source is also simple: [Build CircuitPython for Particle Argon ](building-circuitpython-particle-argon.md)
+
 
 Xenon (Bluetooth)
 -----------------
@@ -74,25 +97,3 @@ Specs:
 -	On-board additional 4MB SPI flash
 
 https://docs.particle.io/datasheets/boron/boron-datasheet/
-
-Install Adafruit nRF52 bootloader
----------------------------------
-
-To use CircuitPython, the nrf52840 module on the Particle Argon needs to be flashed with Adafruit's bootloader. For my setup, this uses Segger J-Link (connected to Particle board header with matching SWD adapter) and OpenOCD.
-
-By burning the Adafruit nRF52 Bootloader on the Particle, you are overwriting the Particle mesh firmware already on your board.
-
-Here are the steps, including installing CircuitPython itself: [Installing CircuitPython on nRF52840-based Particle ](installing-circuitpython-particle-jlink.md)
-
-Build CircuitPython from Source
--------------------------------
-
-Adafruit supports building the `.uf2` image for Particle (Argon, Boron, Xenon) now in its 4.x releases, along with 50+ other boards.
-
-Adafruit also publishes the `.uf2` files for each at https://circuitpython.org/downloads
-
--	https://circuitpython.org/board/particle_argon/
--	https://circuitpython.org/board/particle_xenon/
--	https://circuitpython.org/board/particle_boron/
-
-But building from source is also very simple these days: [Build CircuitPython for Particle Argon ](building-circuitpython-particle-argon.md)
