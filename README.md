@@ -82,7 +82,7 @@ To use CircuitPython, the nrf52840 module on the Particle Argon needs to be flas
 
 By burning the Adafruit nRF52 Bootloader on the Particle, you are overwriting the Particle mesh firmware already on your board.
 
-Here are the steps, including installing CircuitPython itself: [Installing CircuitPython on the nrf52840-based Particle Argon ](installing-circuitpython-particle-argon.md)
+Here are the steps, including installing CircuitPython itself: [Installing CircuitPython on nRF52840-based Particle ](installing-circuitpython-particle-jlink.md)
 
 Build CircuitPython from Source
 -------------------------------
