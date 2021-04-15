@@ -245,6 +245,8 @@ screen /dev/ttyACM0 115200
 
 > Adafruit CircuitPython 6.2.0 on 2021-04-05; Particle Xenon with nRF52840
 
+To end `screen` session: <kbd>C-a :quit</kbd>
+
 CircuitPython programs
 ======================
 
